@@ -1,8 +1,10 @@
-const About = ()=>{
+const About = ({match})=>{
+    console.log(match);
+
     return (
-            <div>
-                <h1>About</h1>
-            </div>
+        <div>
+            <h1>About {match.params.text}</h1>
+        </div>
         )
 };
 

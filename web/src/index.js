@@ -11,7 +11,7 @@ ReactDOM.render(
       <HashRouter>
           <Switch>
               <Route path={"/"} exact component={App}/>
-              <Route path={"/about"} component={About}/>
+              <Route path={"/about/:text"} component={About}/>
               <Route render={()=><h1>404</h1>}/>
           </Switch>
       </HashRouter>
