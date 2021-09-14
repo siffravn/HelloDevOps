@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {HashRouter, Route} from "react-router-dom";
+import About from "./About";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <HashRouter>
+          <Route path={"/"} exact component={App}/>
+          <Route path={"/about"} component={About}/>
+      </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
