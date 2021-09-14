@@ -12,6 +12,7 @@ ReactDOM.render(
           <Switch>
               <Route path={"/"} exact component={App}/>
               <Route path={"/about"} component={About}/>
+              <Route render={()=><h1>404</h1>}/>
           </Switch>
       </HashRouter>
   </React.StrictMode>,
