@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {TextField, Button, Grid} from "@material-ui/core"
 import GiraffeStore from "./GiraffeStore";
+import {observer} from "mobx-react-lite";
 
 const giraffeStore = new GiraffeStore();
 
@@ -21,7 +22,11 @@ function App() {
            <form>
              <TextField id="outlined-basic" label="Outlined" variant="outlined"></TextField>
            </form>
-           <Button variant="contained" color="primary">Primary</Button>
+           <Button
+               variant="contained"
+               color="primary"
+               onClick={()=>giraffeStore.giraffes.push("Elmer")}
+           >Tilføj Giraf</Button>
         </Grid>
           <ul>
               {giraffeStore.giraffes.map((giraffeName,key)=>
@@ -33,4 +38,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
