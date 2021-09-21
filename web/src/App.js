@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import {TextField, Button, Grid} from "@material-ui/core";
+import {TextField, Button, Grid} from "@material-ui/core"
+import GiraffeStore from "./GiraffeStore";
+
+const giraffeStore = new GiraffeStore();
+
+
 
 function App() {
   return (
@@ -18,6 +23,11 @@ function App() {
            </form>
            <Button variant="contained" color="primary">Primary</Button>
         </Grid>
+          <ul>
+              {giraffeStore.giraffes.map((giraffeName,key)=>
+                  <li key={key}>{giraffeName}</li>
+              )}
+          </ul>
       </header>
     </div>
   );
