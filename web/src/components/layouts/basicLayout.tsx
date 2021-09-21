@@ -6,7 +6,7 @@ const BasicLayout: FC =  ({children}) => {
     return (
         <Container maxW="container.lg" p={0}>
             <Header />
-            <Box p={10}>
+            <Box p={[2, 5, 10]}>
                 <main>
                     {children}
                 </main>
