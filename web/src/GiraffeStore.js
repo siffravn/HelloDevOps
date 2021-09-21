@@ -12,7 +12,7 @@ export default class GiraffeStore {
     }
 
     fetchGiraffes (){
-        fetch(baseUrl + "/giraffes").then(
+        fetch(baseUrl + "giraffes").then(
             (response)=> response.json().then(
                 (json)=> runInAction(()=>this.giraffes=json)
             )
