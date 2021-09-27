@@ -8,12 +8,17 @@ export class QuizStoreImpl {
     constructor() {
         makeObservable(this, {
             quizes: observable,
-            addQuiz: action
+            addQuiz: action,
+            getQuiz: action
         });
     }
 
     addQuiz(quiz: Quiz) {
         this.quizes.push(quiz);
+    }
+
+    getQuiz(id: number) {
+        return this.quizes.find(quiz => quiz.id === id)
     }
 }
 
