@@ -1,7 +1,7 @@
 import './App.css';
 import BasicLayout from './components/layouts/basicLayout';
 import { QuizStore } from './stores/quizStore';
-import QuizView from './views/quizView';
+import QuizView from './views/quizSelection';
 
 function App() {
 
