@@ -1,4 +1,4 @@
-export default interface Answer {
-    text:       string,
-    isCorrect:  boolean
-}
+export type Answer = {
+  text: string;
+  isCorrect: boolean;
+};

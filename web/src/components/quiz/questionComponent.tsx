@@ -1,6 +1,7 @@
-import { Stack, Heading } from "@chakra-ui/react";
-import { FC, useState } from "react";
-import Question from "../../model/question";
+import { Heading, Stack } from "@chakra-ui/react";
+import { FC, useEffect, useState } from "react";
+import { Answer } from "../../model/answer";
+import { Question } from "../../model/question";
 import Option from "./optionComponent";
 
 interface questionProp {
@@ -8,7 +9,8 @@ interface questionProp {
 }
 
 const QuestionComponent: FC<questionProp> = ({ question }) => {
-  const [isAnswered, setIsAnswered] = useState(false);
+  //const [isAnswered, setIsAnswered] = useState(false);
+  const [userAnswer, setUserAnswer] = useState<Answer | null>(null);
 
   return (
     <div>
@@ -17,8 +19,8 @@ const QuestionComponent: FC<questionProp> = ({ question }) => {
         {question.answers.map((answer, i) => (
           <Option
             answer={answer}
-            isAnswered={isAnswered}
-            onClick={(answer) => setIsAnswered(true)}
+            userAnswer={userAnswer}
+            onClick={(answer) => !userAnswer && setUserAnswer(answer)}
             key={i}
           />
         ))}
