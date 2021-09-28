@@ -22,7 +22,7 @@ const QuizComponent: FC = observer(() => {
             quiz && question && (
             <Stack>
                 <Heading size="md">{quiz.title}</Heading>
-                <QuestionComponent question={question}></QuestionComponent>
+                <QuestionComponent question={question}/>
                 <Text>{`Question ${currentQuestionIndex + 1}/${quiz.questions.length}`}</Text>
                 <HStack>
                     <Button onClick={() => changeQuestion(currentQuestionIndex - 1)}>Previous</Button>
