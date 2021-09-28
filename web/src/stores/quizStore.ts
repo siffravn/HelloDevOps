@@ -9,7 +9,7 @@ export class QuizStoreImpl {
         makeObservable(this, {
             quizes: observable,
             addQuiz: action,
-            getQuiz: action
+            getQuiz: action,
         });
     }
 
@@ -52,6 +52,19 @@ export const QuizStore = new QuizStoreImpl();
             isCorrect: true
           }
         ]
+      },
+      {
+          description: "nyt spørgsmål",
+          answers: [
+              {
+                  text: "test",
+                  isCorrect: false
+              },
+              {
+                  text: "test2",
+                  isCorrect: true
+              }
+          ]
       }
     ]
   }
