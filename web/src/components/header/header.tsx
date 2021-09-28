@@ -1,6 +1,7 @@
 import { Box, Container, Flex, Heading, HStack } from "@chakra-ui/layout";
 import { FC } from "react";
 import { useColors } from "../../hooks/useColors";
+import ColorModeBtn from "../buttons/colorModeBtn";
 import NavBar from "./navbar";
 
 const Header: FC = ({ children }) => {
@@ -16,6 +17,7 @@ const Header: FC = ({ children }) => {
               <Heading size="md">{appName}</Heading>
               <NavBar />
             </HStack>
+            <ColorModeBtn />
           </Flex>
         </Container>
       </Box>
