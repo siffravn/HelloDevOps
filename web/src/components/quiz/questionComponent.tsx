@@ -1,32 +1,40 @@
 import { Heading, Stack } from "@chakra-ui/react";
-import { FC, useEffect, useState } from "react";
-import { Answer } from "../../model/answer";
+import { observer } from "mobx-react-lite";
+import { FC, useCallback } from "react";
 import { Question } from "../../model/question";
+import { QuestionOption } from "../../model/questionOption";
+import { QuizStore } from "../../stores/quizStore";
 import Option from "./optionComponent";
 
 interface questionProp {
   question: Question;
 }
 
-const QuestionComponent: FC<questionProp> = ({ question }) => {
-  //const [isAnswered, setIsAnswered] = useState(false);
-  const [userAnswer, setUserAnswer] = useState<Answer | null>(null);
+const QuestionComponent: FC<questionProp> = observer(({ question }) => {
+  const answer = QuizStore.quizSession?.answers.get(question);
+
+  const handleAnswer = useCallback(
+    (option: QuestionOption) => {
+      !answer && QuizStore.answerQuestion(question, option);
+    },
+    [question, answer]
+  );
 
   return (
     <div>
       <Heading size="md">{question.description}</Heading>
       <Stack spacing={2}>
-        {question.answers.map((answer, i) => (
+        {question.options.map((option, i) => (
           <Option
+            option={option}
             answer={answer}
-            userAnswer={userAnswer}
-            onClick={(answer) => !userAnswer && setUserAnswer(answer)}
+            onClick={handleAnswer}
             key={i}
           />
         ))}
       </Stack>
     </div>
   );
-};
+});
 
 export default QuestionComponent;

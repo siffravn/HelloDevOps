@@ -1,23 +1,18 @@
 import { Button } from "@chakra-ui/button";
 import { Heading, HStack, Stack, Text } from "@chakra-ui/layout";
 import { observer } from "mobx-react-lite";
-import { FC, useCallback, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { QuizStore } from "../../stores/quizStore";
 import QuestionComponent from "./questionComponent";
-import { QuizSession } from "../../model/quizSession";
-import { Question } from "../../model/question";
-import { Answer } from "../../model/answer";
 
 const QuizComponent: FC = observer(() => {
   const quiz = QuizStore.getQuiz(1); //TODO: quiz id should be read from route
 
-  if (!quiz) return <></>;
+  if (!quiz) return <></>; //TODO: Render something that indicates the quiz cannot be found
 
-  const [quizSession, setQuizSession] = useState<QuizSession>({
-    quiz: quiz,
-    userId: 1,
-    answers: new Map<Question, Answer>(),
-  });
+  useEffect(() => {
+    QuizStore.newQuizSession(quiz);
+  }, [quiz]);
 
   const [question, setQuestion] = useState(quiz?.questions[0]);
 
@@ -33,8 +28,6 @@ const QuizComponent: FC = observer(() => {
     [quiz, setQuestion]
   );
 
-  //useEffect(() => console.log(question), [question]);
-
   return (
     <>
       {quiz && question && (
@@ -44,6 +37,7 @@ const QuizComponent: FC = observer(() => {
           <Text>{`Question ${currentQuestionIndex + 1}/${
             quiz.questions.length
           }`}</Text>
+          <Text>{QuizStore.correctAnswers} correct</Text>
           <HStack>
             <Button onClick={() => changeQuestion(currentQuestionIndex - 1)}>
               Previous

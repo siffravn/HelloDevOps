@@ -1,6 +1,6 @@
-import { Answer } from "./answer";
+import { QuestionOption } from "./questionOption";
 
 export type Question = {
   description: string;
-  answers: Answer[];
+  options: QuestionOption[];
 };

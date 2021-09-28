@@ -1,4 +1,4 @@
-export type Answer = {
+export type QuestionOption = {
   text: string;
   isCorrect: boolean;
 };

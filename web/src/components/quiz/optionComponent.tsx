@@ -1,47 +1,39 @@
 import { Button } from "@chakra-ui/react";
 import { FC, useMemo } from "react";
 import { useColors } from "../../hooks/useColors";
-import { Answer } from "../../model/answer";
+import { QuestionOption } from "../../model/questionOption";
 
 interface optionProps {
-  indexString?: string;
-  answer: Answer;
-  userAnswer: Answer | null;
-  isAnswered?: boolean;
-  onClick: (answer: Answer) => void;
+  option: QuestionOption;
+  answer: QuestionOption | undefined;
+  onClick: (answer: QuestionOption) => void;
 }
 
-const Option: FC<optionProps> = ({
-  indexString,
-  userAnswer,
-  answer,
-  isAnswered,
-  onClick,
-}) => {
+const Option: FC<optionProps> = ({ answer, option, onClick }) => {
   const { optionBg, optionBgHover, optionCorrect, optionIncorrect } =
     useColors();
 
   const bgColor = useMemo(
     () =>
-      !userAnswer
+      !answer
         ? optionBg
-        : answer.isCorrect
+        : option.isCorrect
         ? optionCorrect
-        : userAnswer === answer
+        : answer === option
         ? optionIncorrect
         : optionBg,
-    [userAnswer, answer, optionBg, optionCorrect, optionIncorrect]
+    [answer, option, optionBg, optionCorrect, optionIncorrect]
   );
 
   return (
     <Button
       bg={bgColor}
-      _hover={!userAnswer ? { backgroundColor: optionBgHover } : {}}
+      _hover={!answer ? { backgroundColor: optionBgHover } : {}}
       fontWeight="normal"
       justifyContent="start"
-      onClick={(e) => onClick(answer)}
+      onClick={(e) => onClick(option)}
     >
-      {answer.text}
+      {option.text}
     </Button>
   );
 };

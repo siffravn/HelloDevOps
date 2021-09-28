@@ -1,14 +1,22 @@
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action, computed } from "mobx";
+import { QuestionOption } from "../model/questionOption";
+import { Question } from "../model/question";
 import { Quiz } from "../model/quiz";
+import { QuizSession } from "../model/quizSession";
 
 export class QuizStoreImpl {
   quizes: Quiz[] = [];
+  quizSession: QuizSession | undefined;
 
   constructor() {
     makeObservable(this, {
       quizes: observable,
+      quizSession: observable,
       addQuiz: action,
       getQuiz: action,
+      newQuizSession: action,
+      answerQuestion: action,
+      correctAnswers: computed,
     });
   }
 
@@ -18,6 +26,26 @@ export class QuizStoreImpl {
 
   getQuiz(id: number) {
     return this.quizes.find((quiz) => quiz.id === id);
+  }
+
+  newQuizSession(quiz: Quiz) {
+    this.quizSession = {
+      userId: 1,
+      quiz: quiz,
+      answers: new Map<Question, QuestionOption>(),
+    };
+  }
+
+  answerQuestion(question: Question, answer: QuestionOption) {
+    this.quizSession?.answers.set(question, answer);
+  }
+
+  get correctAnswers(): number {
+    if (!this.quizSession) return 0;
+    return Array.from(this.quizSession.answers.values()).reduce(
+      (acc, answer) => (answer.isCorrect ? acc + 1 : acc),
+      0
+    );
   }
 }
 
@@ -33,7 +61,7 @@ const testQuiz1: Quiz = {
   questions: [
     {
       description: "Hvilket problem forsøger DevOps at løse?",
-      answers: [
+      options: [
         {
           text: "Lange deployment cycles",
           isCorrect: false,
@@ -54,7 +82,7 @@ const testQuiz1: Quiz = {
     },
     {
       description: "nyt spørgsmål",
-      answers: [
+      options: [
         {
           text: "test",
           isCorrect: false,
