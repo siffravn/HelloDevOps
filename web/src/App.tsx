@@ -1,7 +1,8 @@
 import './App.css';
 import BasicLayout from './components/layouts/basicLayout';
+import QuizComponent from './components/quiz/quizComponent';
+import QuizSelection from './components/quiz/quizSelection';
 import { QuizStore } from './stores/quizStore';
-import QuizSelection from './views/quizSelection';
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <BasicLayout>
       {/* router output here. For now, render quizView below */}
       <QuizSelection quizStore={QuizStore} />
+      <QuizComponent />
     </BasicLayout>
   );
 }
