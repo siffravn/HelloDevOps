@@ -6,17 +6,17 @@ import Answer from "../../model/answer";
 interface optionProps {
   indexString?: string;
   answer: Answer;
-  disabled: boolean;
+  isAnswered: boolean;
   onClick: (answer: Answer) => void;
 }
 
 const Option: FC<optionProps> = ({
   indexString,
   answer,
-  disabled,
+  isAnswered,
   onClick,
 }) => {
-  const { optionBg, optionBgHover } = useColors();
+  const { optionBg, optionBgHover, optionCorrect } = useColors();
 
   return (
     // <HStack
@@ -28,12 +28,11 @@ const Option: FC<optionProps> = ({
     //   <Text>{answer.text}</Text>
     // </HStack>
     <Button
-      bg={optionBg}
-      disabled={disabled}
+      bg={!isAnswered ? optionBg : answer.isCorrect ? optionCorrect : optionBg}
       _hover={{ backgroundColor: optionBgHover }}
       fontWeight="normal"
       justifyContent="start"
-      onClick={(e) => onClick(answer)}
+      onClick={(e) => !isAnswered && onClick(answer)}
     >
       {answer.text}
     </Button>

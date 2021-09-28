@@ -17,7 +17,7 @@ const QuestionComponent: FC<questionProp> = ({ question }) => {
         {question.answers.map((answer, i) => (
           <Option
             answer={answer}
-            disabled={isAnswered}
+            isAnswered={isAnswered}
             onClick={(answer) => setIsAnswered(true)}
             key={i}
           />
