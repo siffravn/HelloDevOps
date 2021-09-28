@@ -1,7 +1,7 @@
-import { Box, HStack, Text, VStack } from '@chakra-ui/react';
+import { Stack, Heading } from '@chakra-ui/react';
 import { FC } from 'react';
-import Option from "./optionComponent";
 import Question from "../../model/question";
+import Option from "./optionComponent";
 
 interface questionProp {
     question: Question
@@ -10,8 +10,8 @@ interface questionProp {
 const QuestionComponent: FC<questionProp> =  ({question}) => {
     return (
         <div>
-            <h1>{question.description}</h1>
-            <VStack spacing={5}>
+            <Heading size="md">{question.description}</Heading>
+            <Stack spacing={2}>
                 {
                     question.answers.map((answer, i) => (
                         <Option
@@ -20,7 +20,7 @@ const QuestionComponent: FC<questionProp> =  ({question}) => {
                         />
                     ))
                 }
-            </VStack>
+            </Stack>
         </div>
     );
 }

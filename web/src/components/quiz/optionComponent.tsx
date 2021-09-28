@@ -1,19 +1,21 @@
-import { Box, HStack, Text, VStack } from '@chakra-ui/react';
+import { Box, HStack, Text } from '@chakra-ui/react';
 import { FC } from 'react';
+import { useColors } from '../../hooks/useColors';
 import Answer from "../../model/answer";
 
 interface optionProps {
+    indexString?: string,
     answer: Answer
 }
 
-const Option: FC<optionProps> = ({answer}) => {
+const Option: FC<optionProps> = ({indexString, answer}) => {
+
+    const { optionBg } = useColors();
+
     return (
-        <Box>
-            <HStack>
-                <h3>{answer.text}</h3>
-                <Text>{answer.text}</Text>
-            </HStack>
-        </Box>
+        <HStack bg={optionBg} p={2} rounded="md">
+            <Text>{answer.text}</Text>
+        </HStack>
     )
 }
 
