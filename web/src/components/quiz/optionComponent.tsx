@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/react";
-import { FC } from "react";
+import {FC, useCallback, useMemo, useState} from "react";
 import { useColors } from "../../hooks/useColors";
 import Answer from "../../model/answer";
 
@@ -16,23 +16,26 @@ const Option: FC<optionProps> = ({
   isAnswered,
   onClick,
 }) => {
-  const { optionBg, optionBgHover, optionCorrect } = useColors();
+  const { optionBg, optionBgHover, optionCorrect, optionIncorrect } = useColors();
+  const [selected, setSelected] = useState(false);
+
+  const click = useCallback(() => {
+    !isAnswered && onClick(answer);
+    !isAnswered && setSelected(true);
+  }, [setSelected])
+
+  const color = useMemo(() =>
+    !isAnswered ? optionBg : answer.isCorrect ? optionCorrect : selected ? optionIncorrect : optionBg,
+      [isAnswered, selected]
+)
 
   return (
-    // <HStack
-    //   bg={optionBg}
-    //   _hover={{ backgroundColor: optionBgHover, cursor: "pointer" }}
-    //   p={2}
-    //   rounded="md"
-    // >
-    //   <Text>{answer.text}</Text>
-    // </HStack>
     <Button
-      bg={!isAnswered ? optionBg : answer.isCorrect ? optionCorrect : optionBg}
-      _hover={{ backgroundColor: optionBgHover }}
+      bg={ color }
+      _hover={!isAnswered ? { backgroundColor: optionBgHover } : {}}
       fontWeight="normal"
       justifyContent="start"
-      onClick={(e) => !isAnswered && onClick(answer)}
+      onClick={(e) => click()}
     >
       {answer.text}
     </Button>
