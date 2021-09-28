@@ -1,7 +1,7 @@
 import { Heading, List, ListItem, Stack } from '@chakra-ui/layout';
 import { observer } from 'mobx-react-lite';
 import { FC } from 'react';
-import { QuizStoreImpl } from '../stores/quizStore';
+import { QuizStoreImpl } from '../../stores/quizStore';
 
 interface Props {
     quizStore: QuizStoreImpl
