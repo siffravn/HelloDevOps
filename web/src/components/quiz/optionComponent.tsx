@@ -14,6 +14,9 @@ const Option: FC<optionProps> = ({ answer, option, onClick, i }) => {
   const { optionBg, optionBgHover, optionCorrect, optionIncorrect } =
     useColors();
 
+  const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+  const alphabet = alpha.map((x) => String.fromCharCode(x));
+
   const bgColor = useMemo(
     () =>
       !answer
@@ -34,7 +37,7 @@ const Option: FC<optionProps> = ({ answer, option, onClick, i }) => {
       justifyContent="start"
       onClick={(e) => onClick(option)}
     >
-      {i}
+      {alphabet[i]}
       {option.text}
     </Button>
   );
