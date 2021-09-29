@@ -5,7 +5,7 @@ import  HomePage from './pages/HomePage'
 import { Route, Switch } from "react-router-dom";
 
 const App: FC = () => {
-
+  document.title = "YouQuiz"
   return (
     <Switch>
      <Route exact path="/" component={HomePage} />
