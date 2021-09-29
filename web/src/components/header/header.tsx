@@ -14,7 +14,7 @@ const Header: FC = ({ children }) => {
         <Container maxW="container.lg" p={0}>
           <Flex justifyContent="space-between" paddingX={[2, 5, 10]} py={3}>
             <HStack spacing={10}>
-              <Heading size="md">{appName}</Heading>
+              <Heading as="a" href="/" size="md">{appName}</Heading>
               <NavBar />
             </HStack>
             <ColorModeBtn />
