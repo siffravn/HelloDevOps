@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Stack, Text } from "@chakra-ui/react";
 import { FC, useMemo } from "react";
 import { useColors } from "../../hooks/useColors";
 import { QuestionOption } from "../../model/questionOption";
@@ -37,8 +37,12 @@ const Option: FC<optionProps> = ({ answer, option, onClick, i }) => {
       justifyContent="start"
       onClick={(e) => onClick(option)}
     >
-      {alphabet[i]}
-      {option.text}
+      <Stack
+          direction={"row"}
+          spacing={6}>
+        <Text>{alphabet[i]}</Text>
+        <Text>{option.text}</Text>
+      </Stack>
     </Button>
   );
 };
