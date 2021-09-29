@@ -29,7 +29,7 @@ const QuestionComponent: FC<questionProp> = observer(({ question }) => {
             option={option}
             answer={answer}
             onClick={handleAnswer}
-            key={i}
+            i={i}
           />
         ))}
       </Stack>

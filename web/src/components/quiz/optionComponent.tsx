@@ -7,9 +7,10 @@ interface optionProps {
   option: QuestionOption;
   answer: QuestionOption | undefined;
   onClick: (answer: QuestionOption) => void;
+  i: number;
 }
 
-const Option: FC<optionProps> = ({ answer, option, onClick }) => {
+const Option: FC<optionProps> = ({ answer, option, onClick, i }) => {
   const { optionBg, optionBgHover, optionCorrect, optionIncorrect } =
     useColors();
 
@@ -33,6 +34,7 @@ const Option: FC<optionProps> = ({ answer, option, onClick }) => {
       justifyContent="start"
       onClick={(e) => onClick(option)}
     >
+      {i}
       {option.text}
     </Button>
   );
