@@ -1,43 +1,39 @@
 import { Button } from "@chakra-ui/react";
-import {FC, useCallback, useMemo, useState} from "react";
+import { FC, useMemo } from "react";
 import { useColors } from "../../hooks/useColors";
-import Answer from "../../model/answer";
+import { QuestionOption } from "../../model/questionOption";
 
 interface optionProps {
-  indexString?: string;
-  answer: Answer;
-  isAnswered: boolean;
-  onClick: (answer: Answer) => void;
+  option: QuestionOption;
+  answer: QuestionOption | undefined;
+  onClick: (answer: QuestionOption) => void;
 }
 
-const Option: FC<optionProps> = ({
-  indexString,
-  answer,
-  isAnswered,
-  onClick,
-}) => {
-  const { optionBg, optionBgHover, optionCorrect, optionIncorrect } = useColors();
-  const [selected, setSelected] = useState(false);
+const Option: FC<optionProps> = ({ answer, option, onClick }) => {
+  const { optionBg, optionBgHover, optionCorrect, optionIncorrect } =
+    useColors();
 
-  const click = useCallback(() => {
-    !isAnswered && onClick(answer);
-    !isAnswered && setSelected(true);
-  }, [setSelected])
-
-  const color = useMemo(() =>
-    !isAnswered ? optionBg : answer.isCorrect ? optionCorrect : selected ? optionIncorrect : optionBg,
-      [isAnswered, selected]
-)
+  const bgColor = useMemo(
+    () =>
+      !answer
+        ? optionBg
+        : option.isCorrect
+        ? optionCorrect
+        : answer === option
+        ? optionIncorrect
+        : optionBg,
+    [answer, option, optionBg, optionCorrect, optionIncorrect]
+  );
 
   return (
     <Button
-      bg={ color }
-      _hover={!isAnswered ? { backgroundColor: optionBgHover } : {}}
+      bg={bgColor}
+      _hover={!answer ? { backgroundColor: optionBgHover } : {}}
       fontWeight="normal"
       justifyContent="start"
-      onClick={(e) => click()}
+      onClick={(e) => onClick(option)}
     >
-      {answer.text}
+      {option.text}
     </Button>
   );
 };
