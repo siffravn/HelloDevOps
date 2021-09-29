@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useParams } from 'react-router';
 import BasicLayout from '../components/layouts/basicLayout';
 import QuizComponent from '../components/quiz/quizComponent';
-import QuizSelection from '../components/quiz/quizSelection';
+import QuizSelection from '../components/quiz/QuizSelection/quizSelection';
 import { QuizStore } from '../stores/quizStore';
 
 type QuizPageProps = {
@@ -19,10 +19,8 @@ const QuizPage: FC = () => {
 
   return (
     <BasicLayout>
-      <QuizSelection quizStore={QuizStore} />
       <QuizComponent />
     </BasicLayout>
-   
   );
 }
 
