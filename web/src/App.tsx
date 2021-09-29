@@ -10,7 +10,6 @@ function App() {
     return (
         <BasicLayout>
             {/* router output here. For now, render quizView below */}
-            <QuizCompletion correctAnswers={3} questionAmount={10}/>
             <QuizSelection quizStore={QuizStore}/>
             <QuizComponent/>
         </BasicLayout>
