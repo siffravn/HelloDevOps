@@ -10,7 +10,6 @@ function App() {
     <BasicLayout>
       {/* router output here. For now, render quizView below */}
       <QuizSelection />
-      <QuizComponent />
     </BasicLayout>
   );
 }
