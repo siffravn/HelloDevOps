@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useColors } from '../../../hooks/useColors';
-import Quiz from '../../../model/quiz';
+import {Quiz} from "../../../model/quiz";
 
 interface Props {
     quiz: Quiz
