@@ -21,6 +21,7 @@ const QuizPage: FC = () => {
     <BasicLayout>
       <QuizComponent />
     </BasicLayout>
+   
   );
 }
 
