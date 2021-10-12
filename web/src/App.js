@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {TextField, Button, Grid, Container, Box} from "@material-ui/core"
 import GiraffeStore from "./GiraffeStore";
@@ -39,6 +38,10 @@ function App() {
         </header>
     </Container>
   );
+}
+
+export function sillyMethod(num1, num2) {
+    return num1 + num2
 }
 
 export default observer(App);
