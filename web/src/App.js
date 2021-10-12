@@ -41,4 +41,8 @@ function App() {
   );
 }
 
+export function sillyMethod(num1, num2) {
+    return num1 + num2
+}
+
 export default observer(App);
