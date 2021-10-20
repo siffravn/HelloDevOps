@@ -1,9 +1,15 @@
 matrix:
   include:
-    - language: java
-      jdk: openjdk11
-
-    - language: node_js
-      before_install: cd web
-      node_js:
-        - node
+  - language: java
+    jdk: openjdk11
+  - language: node_js
+    before_install: cd web
+    node_js:
+    - node
+deploy:
+  provider: heroku
+  api_key:
+    secure: iR8q5OWphaTcJ1SMBaFKQoVwdUxxxvF+b0iJ1SPy1m30HOed/NKmoDhVPOeWITlC5eJ93hfrd+NRBKpBI00uRNOTa82mZo5Yu0S5X1HNKSzv4l1nAA4FfMoi7TWUYLxyY7hhCvx+hwXTXesOB9QPyTVCNzHf5bRaWTwCpZQvhSkR/rqJO8b8XFzvrvfRQo2cEC3XumtzfVcPfJKwdFiV6EF3LRxihQpZ5n9D/QREQHKuThi8mC76+qsAVJwmq/RSHd59dfa98Xj896ZG4l+snIwKqr9fKa4+d3RI5WVapk9Re8+q2Y7yC6+6k80ZN3GoplaahiiNp/UnyJGhnMog3eFdJw3tUXEqgHcXxYZrJPr27eJJj9JfKXkZvm8Cs8a/N4jom/1UOGAbF08BksygHcYhoye+zvWVTJwGzUNWcu7bHj3lpl5k4AXOPnfsaba9Z6XpTpC8NoqDrR+VzszyQEH+Kmmoj7W2MO2JFD/CnaXyWLMgEd1UZ8ovjskpTJUSrHHGfzfnYnYf25cvvo/vcquvT7eIFF/mJ9DeYaqNCHKnoqR+Hnv7gqbyhB2XgldqsD+gzcqWbctAmzEg8I2lCUiigeQGZ9qV9mwqhK31eClLmCw7p6jAz6woHstMkdHIoC/pd9X28GqiKRT639QQbgRgwmwTnqUC0sXYIr3NrVQ=
+  app: hellodevops-01
+  on:
+    repo: siffravn/HelloDevOps
