@@ -1,5 +1,4 @@
-import giraffes.Giraffe;
-import giraffes.GiraffeDAO;
+package giraffes;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
