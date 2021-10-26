@@ -1,19 +1,18 @@
 matrix:
   include:
-    - stage: test
-      - language: java
-        jdk: openjdk11
-      - language: node_js
-        before_install: cd web
-        node_js:
-          - node
-    - stage: deploy
-      language: java
+    - language: java
       jdk: openjdk11
-      deploy:
-        provider: heroku
-        api_key:
-          secure: b1IcwZ1yti5/iRx0MdueEmlAuraeLWeoPGHTjgqa6GuWMg9BoPRpYSpKrfjDxJUqRBBf1Il9mCmCoXegOAoz3GK0DZo1Okt5vRQGQJW0DBD6VIr3kDAYM3dhu+Sdxy5KZAg4mlNnTulzJX7YiEKHhidy+HaZdnzYTc/yaIbIW1AIZp9ofVw6FckcHpdsR7bdIIZxwQWOMeLdnrbPb9jCO2oQHfzKMJqh887gJYRH4StneJjBvXbUt1BuqZVu1W4oaydHdl24AS0U6HbYbaglQRVpsdnRHJp9gB17uPfgNU8vo1WNm7X20q58ufoX+S9mi+Xd4KkRRHGaAqodAAJ/fasIGMJudkCUAqBin4SxSYD17VhqREFmPfJXNZVnXiqe01hkNK/m8+jXOKMgE4AasgePRLwy1MguVbOB+OHunq95PqCAwNTN6PH+u4mku1mK3/vbidEkyL52F9jvQPLXHRVWHZSQlTXBwkjnszbYdLIG9X7/9qrky3KZIPuc3dIwzo7Clx7G2z/E6xaKnqKT4/VEndEgUcDIA7rH/joXItrzCiudOD3McNGJMzeVOapuc3b02FBklkOwDCJ1f8XtGsEtWTZzMa6BCeXLdu4khJDNI1dYcu9nQRCJYmMbVV+q1LBAjtTBddI0g0F36w537SJD5vBtI1EANXHH5QzvRis=
-        app: hellodevops-01
-        on:
-          repo: siffravn/HelloDevOps
+
+    - language: node_js
+      before_install: cd web
+      node_js:
+        - node
+
+# Build script to auto deploy on heroku from travis, but shit's not working, so just using heroku deployment anyways...
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: b1IcwZ1yti5/iRx0MdueEmlAuraeLWeoPGHTjgqa6GuWMg9BoPRpYSpKrfjDxJUqRBBf1Il9mCmCoXegOAoz3GK0DZo1Okt5vRQGQJW0DBD6VIr3kDAYM3dhu+Sdxy5KZAg4mlNnTulzJX7YiEKHhidy+HaZdnzYTc/yaIbIW1AIZp9ofVw6FckcHpdsR7bdIIZxwQWOMeLdnrbPb9jCO2oQHfzKMJqh887gJYRH4StneJjBvXbUt1BuqZVu1W4oaydHdl24AS0U6HbYbaglQRVpsdnRHJp9gB17uPfgNU8vo1WNm7X20q58ufoX+S9mi+Xd4KkRRHGaAqodAAJ/fasIGMJudkCUAqBin4SxSYD17VhqREFmPfJXNZVnXiqe01hkNK/m8+jXOKMgE4AasgePRLwy1MguVbOB+OHunq95PqCAwNTN6PH+u4mku1mK3/vbidEkyL52F9jvQPLXHRVWHZSQlTXBwkjnszbYdLIG9X7/9qrky3KZIPuc3dIwzo7Clx7G2z/E6xaKnqKT4/VEndEgUcDIA7rH/joXItrzCiudOD3McNGJMzeVOapuc3b02FBklkOwDCJ1f8XtGsEtWTZzMa6BCeXLdu4khJDNI1dYcu9nQRCJYmMbVV+q1LBAjtTBddI0g0F36w537SJD5vBtI1EANXHH5QzvRis=
+#  app: hellodevops-01
+#  on:
+#    repo: siffravn/HelloDevOps
