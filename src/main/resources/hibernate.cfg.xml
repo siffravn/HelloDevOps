@@ -35,6 +35,7 @@
 
         <!-- Persistent classes - remember to update -->
         <mapping class="dto.models.User"/>
+        <mapping class="giraffes.Giraffe"/>
 
     </session-factory>
 </hibernate-configuration>
