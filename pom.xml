@@ -104,6 +104,13 @@
             <version>6.1.7.Final</version>
         </dependency>
 
+        <!-- Database connector -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.24</version>
+        </dependency>
+
 
     </dependencies>
 
